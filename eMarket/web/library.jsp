@@ -85,15 +85,15 @@
                                 <div class="panel-heading"> Product Details </div>
                                 <table class="table">
                                     <tr>
-                                        <th>Date:</th>
+                                        <th>Title:</th>
                                         <td>1782</td>
                                     </tr>
                                     <tr>
-                                        <th>Medium:</th>
+                                        <th>Author:</th>
                                         <td>Oil on canvas</td>
                                     </tr>  
                                     <tr>
-                                        <th>Dimensions:</th>
+                                        <th>Genre:</th>
                                         <td>98cm x 71cm</td>
                                     </tr> 
                                     <tr>
@@ -105,7 +105,7 @@
                                         <td><a href="#">Realism</a>, <a href="#">Rococo</a></td>
                                     </tr> 
                                     <tr>
-                                        <th>Subjects:</th>
+                                        <th>Print Length:</th>
                                         <td><a href="#">People</a>, <a href="#">Arts</a></td>
                                     </tr>     
                                 </table>
