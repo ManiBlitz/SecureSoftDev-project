@@ -121,19 +121,25 @@ public class DBUtils {
         pstm.setInt(2, product.getCode());
         pstm.executeUpdate();
     }
-/*
-    public static void insertProduct(Connection conn, Product product) throws SQLException {
-        String sql = "Insert into Product(Code, Name,Price) values (?,?,?)";
+
+    public static void registerUser(Connection conn, User newUser) throws SQLException {
+        String sql = "Insert into user(userName, l_name,f_name, sex, email, password, phone_num, date_of_birth) values (?,?,?,?,?,?,?,?)";
  
         PreparedStatement pstm = conn.prepareStatement(sql);
  
-        pstm.setString(1, product.getCode());
-        pstm.setString(2, product.getName());
-        pstm.setFloat(3, product.getPrice());
+        pstm.setString(1, newUser.getUserName());
+        pstm.setString(2, newUser.getLastName());
+        pstm.setString(3, newUser.getFirstName());
+        pstm.setString(4, ""+newUser.getGender());
+        pstm.setString(5, newUser.getEmail());
+        pstm.setString(6, newUser.getPassword());
+        pstm.setString(7, newUser.getPhoneNumber());
+        pstm.setDate(8, (Date) newUser.getDOB());
+        
  
         pstm.executeUpdate();
     }
-
+/*
     public static void deleteProduct(Connection conn, String code) throws SQLException {
         String sql = "Delete From Product where Code= ?";
  
