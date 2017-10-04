@@ -53,7 +53,7 @@ public class CartServlet extends HttpServlet {
         
         // Check if there is a cart
         Cart cart = MyUtils.getStoredCart(session);
-        List items = cart.getCart();
+        
  
         // Not logged in
         if (cart == null) {
@@ -61,6 +61,7 @@ public class CartServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/productList");
             return;
         }
+        List items = cart.getCart();
         // Store info to the request attribute before forwarding.
         request.setAttribute("cart", items); 
         
