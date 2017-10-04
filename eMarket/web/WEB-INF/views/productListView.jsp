@@ -22,6 +22,8 @@
           <th>Name</th>
           <th>Price</th>
           <th>Units</th>
+          <th>Quantity to add</th>
+          <th>Add to cart</th>
        </tr>
        <c:forEach items="${productList}" var="product" >
           <tr>
@@ -29,6 +31,14 @@
              <td>${product.name}</td>
              <td>${product.price}</td>
              <td>${product.units}</td>
+             <form method="POST" action="${pageContext.request.contextPath}/cart">
+                <td>
+                   <input type="number" name="quantity" min="1" max="20">
+                   <input type="hidden" name="bookName" value="${product.name}">
+                   <input type="hidden" name="price" value="${product.price}">
+                </td>
+                <td><input type="submit" name="action" value="add"></td>
+             </form>
           </tr>
        </c:forEach>
     </table>

@@ -15,8 +15,22 @@
    |
    <a href="${pageContext.request.contextPath}/userInfo">My Account Info</a>
    |
+   <a href="${pageContext.request.contextPath}/cart">Cart</a>
+   <%  
+     if (session.getAttribute("loginedUser") == null) {  
+   %>
+   |
    <a href="${pageContext.request.contextPath}/login">Login</a>
    |
    <a href="${pageContext.request.contextPath}/registration">Sign up</a>
-    
+   <%
+       }else{
+
+
+    %>
+    |
+   <a href="${pageContext.request.contextPath}/logout">Logout</a>
+   <%
+       }
+   %>
 </div>  
