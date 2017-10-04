@@ -16,8 +16,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
  
 import org.eMarket.app.beans.Book;
+import org.eMarket.app.beans.User;
 import org.eMarket.app.utils.DBUtils;
 import org.eMarket.app.utils.MyUtils;
  
@@ -32,6 +34,19 @@ public class ProductListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+ 
+        // Check User has logged on
+        User loginedUser = MyUtils.getLoginedUser(session);
+ 
+        // Not logged in
+        if (loginedUser == null) {
+            // Redirect to login page.
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+        
         Connection conn = MyUtils.getStoredConnection(request);
  
         String errorString = null;

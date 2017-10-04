@@ -12,6 +12,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.eMarket.app.beans.Cart;
  
 import org.eMarket.app.beans.User;
  
@@ -72,6 +73,18 @@ public class MyUtils {
         // 0 seconds (This cookie will expire immediately)
         cookieUserName.setMaxAge(0);
         response.addCookie(cookieUserName);
+    }
+    
+    // Retrieve User cart
+    public static Cart getStoredCart(HttpSession session){
+        Cart userCart = (Cart) session.getAttribute("cart");
+        return userCart;
+    }
+    
+    // Store cart information
+    public static void storeCart(HttpSession session, Cart cart){
+        // On the JSP can access via ${cart}
+        session.setAttribute("cart", cart);
     }
  
 }
