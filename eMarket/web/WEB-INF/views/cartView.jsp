@@ -1,3 +1,4 @@
+<%@page import="org.eMarket.app.beans.Cart"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
@@ -31,7 +32,77 @@
              <td>${product.total}</td>
           </tr>
        </c:forEach>
+          <tr>
+              <td></td>
+              <td></td>
+              <td>Total</td>
+              <td>
+              <%
+                  Cart cart = (Cart) session.getAttribute("cart");
+                  float ttc = cart.getTotal();
+                  out.print(ttc);
+                  %>
+                  
+              </td>
+          </tr>
     </table>
+                  <br>
+                  <hr>
+    <div>
+        <form>
+            
+            <label>
+                Address
+            </label>
+            <input type="text" name="address">
+            
+            <label>
+                Apartment number
+            </label>
+            <input type="text" name="apt">
+            
+            <label>
+                City
+            </label>
+            <input type="text" name="city">
+            
+            <label>
+                State
+            </label>
+            <input type="text" name="state">
+            
+            <label>
+                Country
+            </label>
+            <input type="text" name="country">
+            
+            <hr>
+            
+            <label>
+                Credit card number
+            </label>
+            <input type="password" name="card_number">
+            
+            <label>
+                CVS
+            </label>
+            <input type="number" name="cvs">
+            
+            <label>
+                Expiration date
+            </label>
+            <input type ="number" name="exp_month" min="1" max="12">
+            <input type="number" name="exp-year" min="2017" max="2099">
+            
+            <label>
+                Card Holder Name
+            </label>
+            <input type="text" name="card_holder">
+            
+            <input type="submit" name="checkout" value="Checkout">
+            
+        </form>
+    </div>
  
     <jsp:include page="_footer.jsp"></jsp:include>
  
