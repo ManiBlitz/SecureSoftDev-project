@@ -53,7 +53,7 @@ public class CartServlet extends HttpServlet {
         
         // Check if there is a cart
         Cart cart = MyUtils.getStoredCart(session);
-        List items = cart.getCart();
+        
  
         // Not logged in
         if (cart == null) {
@@ -61,6 +61,7 @@ public class CartServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/productList");
             return;
         }
+        List items = cart.getCart();
         // Store info to the request attribute before forwarding.
         request.setAttribute("cart", items); 
         
@@ -78,8 +79,10 @@ public class CartServlet extends HttpServlet {
  public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
  
+     String errorString = "";
      System.out.println("Goes through the doPost()");
   String strAction = request.getParameter("action");
+  request.setAttribute("errorString", errorString);
    
    
   if(strAction!=null && !strAction.equals("")) {

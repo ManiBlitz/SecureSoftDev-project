@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@page import="org.eMarket.app.beans.Cart"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
     
@@ -15,7 +16,19 @@
    |
    <a href="${pageContext.request.contextPath}/userInfo">My Account Info</a>
    |
-   <a href="${pageContext.request.contextPath}/cart">Cart</a>
+   <a href="${pageContext.request.contextPath}/cart">
+       Cart
+       <% 
+           if(session.getAttribute("cart") != null){
+               Cart cart = (Cart) session.getAttribute("cart");
+               //System.out.println(cart.getNumberElements());
+               int cart_items = cart.getNumberElements();
+               %>
+               (<b><%out.print(cart_items);%></b>)
+               <%
+           }
+       %>
+   </a>
    <%  
      if (session.getAttribute("loginedUser") == null) {  
    %>

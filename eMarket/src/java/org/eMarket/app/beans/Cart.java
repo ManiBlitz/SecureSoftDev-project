@@ -60,10 +60,12 @@ public class Cart {
     
     private List<CartItem> cart = new ArrayList<>();
     private String userName;
+    private int numberItems;
     
     public Cart(){
         
     }
+    
 
     public List<CartItem> getCart() {
         return cart;
