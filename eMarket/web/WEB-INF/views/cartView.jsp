@@ -14,6 +14,8 @@
     <jsp:include page="_menu.jsp"></jsp:include>
  
     <h3>Cart</h3>
+    
+    <p style="color: red;">${errorString}</p>
  
     
  
@@ -49,7 +51,8 @@
                   <br>
                   <hr>
     <div>
-        <form>
+        <form method="POST" action="${pageContext.request.contextPath}/checkout">
+            <input type="hidden" name="bill" value="<%out.print(ttc);%>">
             
             <label>
                 Address
@@ -76,6 +79,11 @@
             </label>
             <input type="text" name="country">
             
+             <label>
+                Zip code
+            </label>
+            <input type="text" name="zip_code">
+            
             <hr>
             
             <label>
@@ -92,7 +100,7 @@
                 Expiration date
             </label>
             <input type ="number" name="exp_month" min="1" max="12">
-            <input type="number" name="exp-year" min="2017" max="2099">
+            <input type="number" name="exp_year" min="2017" max="2099">
             
             <label>
                 Card Holder Name
