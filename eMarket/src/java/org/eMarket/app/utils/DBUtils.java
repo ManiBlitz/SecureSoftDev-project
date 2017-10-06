@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
  
 import org.eMarket.app.beans.Book;
+import org.eMarket.app.beans.Checkout;
 import org.eMarket.app.beans.User;
  
 public class DBUtils {
@@ -62,6 +63,27 @@ public class DBUtils {
         return null;
     }
  
+    public static void checkoutProcess(Connection conn, Checkout chk) throws SQLException{
+        String sql = "Insert into checkout(address, apt_number,city,state,country,zipcode,credit_card_num,credit_card_cvs,expiration_month,expiration_year,card_holder_name,bill) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+ 
+        PreparedStatement pstm = conn.prepareStatement(sql);
+ 
+        pstm.setString(1, chk.getAddress());
+        pstm.setString(2, chk.getApt_number());
+        pstm.setString(3, chk.getCity());
+        pstm.setString(4, chk.getState());
+        pstm.setString(5, chk.getCountry());
+        pstm.setString(6, chk.getZip_code());
+        pstm.setString(7, chk.getCredit_card_number());
+        pstm.setInt(8, chk.getCvs());
+        pstm.setInt(9, chk.getExp_month());
+        pstm.setInt(10, chk.getExp_year());
+        pstm.setString(11, chk.getCard_holder_name());
+        pstm.setFloat(12, chk.getBill());
+        
+        pstm.executeUpdate();
+    }
+    
     public static List<Book> queryProduct(Connection conn) throws SQLException {
         String sql = "Select a.* from book a ";
  

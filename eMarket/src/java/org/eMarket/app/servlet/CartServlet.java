@@ -79,8 +79,10 @@ public class CartServlet extends HttpServlet {
  public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
  
+     String errorString = "";
      System.out.println("Goes through the doPost()");
   String strAction = request.getParameter("action");
+  request.setAttribute("errorString", errorString);
    
    
   if(strAction!=null && !strAction.equals("")) {
